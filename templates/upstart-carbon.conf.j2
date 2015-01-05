@@ -11,5 +11,8 @@ respawn
 setgid {{graphite_api_group}}
 setuid {{graphite_api_user}}
 
-exec {{graphite_api_home}}/bin/carbon_cache.py start --config={{graphite_api_home}}/conf/carbon.conf --pidfile={{graphite_api_home}}/storage/carbon-cache.pid
+env GRAPHITE_CONF_DIR={{ graphite_api_conf_dir }}
+env GRAPHITE_STORAGE_DIR={{ graphite_api_storage_dir }}
+env LOCAL_DATA_DIR={{ graphite_api_local_data_dir }}
+exec {{graphite_api_home}}/bin/carbon_cache.py start --config=${GRAPHITE_CONF_DIR}/carbon.conf --pidfile=${GRAPHITE_STORAGE_DIR}/carbon-cache.pid
 

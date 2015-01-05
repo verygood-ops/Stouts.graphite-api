@@ -8,8 +8,11 @@ graphite_api_group: "{{ graphite_api_user }}"       # Set group
 
 # Setup Graphite-API
 graphite_api_timezone: Europe/Berlin
+graphite_api_conf_dir: "{{ graphite_api_home }}"/conf
+graphite_api_storage_dir: "{{ graphite_api_home }}"/storage
+graphite_api_local_data_dir: "{{ graphite_api_storage_dir }}"/whisper
 graphite_api_whisper_directories:
-- "{{graphite_api_home}}/storage/whisper"
+  - "{{ graphite_api_local_data_dir }}"
 graphite_api_search_index: "{{graphite_api_home}}/index"
 
 # Setup Graphite-Carbon
